@@ -1,10 +1,9 @@
-# Financial Prediction Using LSTM and Multivariable Factor Regression
-
-# During the Covid-19 Pandemic
+# Financial Prediction Using LSTM and Multivariable Factor Regression during the Covid-19 Pandemic
 
 Yann Hoffmann – University of Luxembourg
 MICS - Master in Computer Sciences
 Specialization: Data Sciences
+
 **Abstract**
 
 The objective of this paper is to demonstrate the adequacy of LSTM models in predicting stock
@@ -208,14 +207,13 @@ next section.
 
 2. Preprocessing
 
-```
 The preprocessing is done through the help of the MLlib Spark library. Throughout the
 preprocessing I used the DataFrame Spark API because the DataSet is not available on PySpark and
 because DataFrames are now the recommended entry point that ensure better performances when
 considering DAG optimizations. Conversion to RDD are sometimes warranted when row wise
 transformation are under consideration or when transposing a DataFrame although this is not
 recommended for real-world performance issues.
-```
+
 ```
 Results and interpretation
 ```
@@ -229,7 +227,6 @@ Preprocessing time (s)** 390.2 75.
 **890 Inferences (s)** 26.2 N/A
 **Optuna (50 * 150 epochs)** 10 hours N/A
 
-```
 The above table shows the difference between running different stages of the machine learning
 life cycle on a single node computer and on the iris cluster. We observe that the preprocessing stage
 enjoys a significant speed-up on the cluster of more than 4x. If we extrapolate the 100 epochs training
@@ -239,14 +236,11 @@ network bottlenecks and to the fact that the data set is relatively small so tha
 economies of scale that usually come out of distributed training. Finally the inference takes only 26s on
 a single node computer and the Optuna optimization is by far the lengthiest operation with a duration of
 10 hours.
-```
-```
+
 After training the LSTM model on the HPC, we get an accuracy of 0.317% which is barely an
 improvement on the 100 epochs training. This could be due to the choice of the learning rate that was
 optimized for a 100 epochs training and not 500. Furthermore, a more complex model would benefit
 from the additional training time whereas a (128, 128) model has less room for improvement.
-```
-_1. Df_
 
 
 2. LSTM forecasting
